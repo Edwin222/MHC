@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
     entry: {
-        "main": "./src/MainScene.ts"
+        "main": "./src/Game.ts"
     },
     output: {
         filename: "bundle.js",
@@ -16,5 +16,8 @@ module.exports = {
                 use: ['ts-loader']
             }
         ]
+    },
+    resolve: {
+        extensions: ['.ts', '.js']
     }
 };

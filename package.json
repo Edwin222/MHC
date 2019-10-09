@@ -19,6 +19,6 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "test" : "jest"
+    "test": "jest"
   }
 }
