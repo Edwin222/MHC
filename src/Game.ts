@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import * as MainScene from "./Basic/MainScene";
+import * as MainScene from "./MainScene";
 
 const gameConfig : Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
