@@ -5,31 +5,31 @@ import { ActionDelegate as Action } from '../Delegate';
 
 export default class Assert 
 {
-    public static IsTrue(value: boolean)
-    {
+    public static IsTrue(value: boolean, msg: string = "Assert.IsTrue가 예측한 값과 다릅니다.")
+    { 
         if(!value)
         {
-            throw new AssertException("Assert.IsTrue가 예측한 값과 다릅니다.");
+            throw new AssertException(msg);
         }
     }
 
-    public static IsFalse(value: boolean)
+    public static IsFalse(value: boolean, msg: string = "Assert.IsFalse가 예측한 값과 다릅니다.")
     {
         if(value)
         {
-            throw new AssertException("Assert.IsFalse가 예측한 값과 다릅니다.");   
+            throw new AssertException(msg);   
         }
     }
 
-    public static IsEqual<T>(value: T, expected: T)
+    public static IsEqual<T>(value: T, expected: T, msg: string = "Assert.IsEqual에서 실제 값 ${value}이 예측한 값 ${expected}과 다릅니다.")
     {
         if(value != expected)
         {
-            throw new AssertException("Assert.IsEqual에서 실제 값 ${value}이 예측한 값 ${expected}과 다릅니다.");
+            throw new AssertException(msg);
         }
     }
 
-    public static ThrowException(action: Action, msg: string)
+    public static ThrowException(action: Action, expectedMsg: string)
     {
         try 
         {
@@ -40,10 +40,10 @@ export default class Assert
         {
             if(!error.hasOwnProperty("msg"))
             {
-                throw new AssertException("발생한 예외는 ${msg}를 출력하지 않습니다. : ${error}");
+                throw new AssertException("발생한 예외는 ${expectedMsg}를 출력하지 않습니다. : ${error}");
             }
-            else if(error.msg !== msg){
-                throw new AssertException("발생한 예외 메시지는 예상 메시지 ${msg}와 다릅니다. : ${error.msg}");
+            else if(error.msg !== expectedMsg){
+                throw new AssertException("발생한 예외 메시지는 예상 메시지 ${expectedMsg}와 다릅니다. : ${error.msg}");
             }
         }
     }
