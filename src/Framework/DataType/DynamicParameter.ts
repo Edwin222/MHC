@@ -2,9 +2,10 @@
 
 import { Assert } from "../Assertion/Assert";
 import { MathHelper } from "../MathHelper";
+import { IDynamicParameter } from "./IDynamicParameter";
 
 // 증감 가능한 파라미터를 나타냅니다. 최댓값이 변하면 현재값도 비례해서 변합니다.
-export class DynamicParameter
+export class DynamicParameter implements IDynamicParameter
 {
     private _max: number;
     get Max(): number
