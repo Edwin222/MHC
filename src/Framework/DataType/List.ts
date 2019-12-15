@@ -87,6 +87,8 @@ export class List<T>
 
     public RemoveFirst()
     {
+        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 지우려고 시도했습니다.");
+
         var target = this._head;
 
         this._head = this._head.Next;
@@ -99,6 +101,8 @@ export class List<T>
 
     public RemoveLast()
     {
+        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 지우려고 시도했습니다.");
+
         var target = this._tail;
 
         this._tail = this._tail.Prev;
@@ -121,6 +125,18 @@ export class List<T>
         }
 
         return cursor.Content;
+    }
+
+    public GetFirst(): T
+    {
+        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 GetFirst()를 시도했습니다.");
+        return this._head.Content;
+    }
+
+    public GetLast(): T
+    {
+        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 GetLast()를 시도했습니다.");
+        return this._tail.Content;
     }
 
     public IndexOf(item: T): number
