@@ -92,7 +92,15 @@ export class List<T>
         var target = this._head;
 
         this._head = this._head.Next;
-        this._head.Prev = null;
+        if(this._head !== null)
+        {
+            this._head.Prev = null;
+        }
+        else
+        {
+            this._tail = null;
+        }
+
         this._count--;
 
         target.Prev = null;
@@ -106,7 +114,15 @@ export class List<T>
         var target = this._tail;
 
         this._tail = this._tail.Prev;
-        this._tail.Next = null;
+        if(this._tail !== null)
+        {
+            this._tail.Next = null;
+        }
+        else
+        {
+            this._head = null;
+        }
+
         this._count--;
 
         target.Prev = null;
