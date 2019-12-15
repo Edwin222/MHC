@@ -109,6 +109,12 @@ test("예외 처리 테스트", () =>
     
     // 빈 상태에서 지울 수 없다.
     expect(list.Remove.bind(list, 2)).toThrowError(Error("비어있는 리스트에서 원소를 지우려 했습니다."));
+    expect(list.RemoveFirst.bind(list)).toThrowError(Error("비어있는 리스트에서 원소를 지우려 했습니다."));
+    expect(list.RemoveLast.bind(list)).toThrowError(Error("비어있는 리스트에서 원소를 지우려 했습니다."));
+
+    // 빈 상태에서 GetFirst, Last는 불가하다.
+    expect(list.GetFirst.bind(list)).toThrowError(Error("리스트가 비어있는데 GetFirst()를 시도했습니다."));
+    expect(list.GetLast.bind(list)).toThrowError(Error("리스트가 비어있는데 GetLast()를 시도했습니다."));
 
     // 크기보다 큰 인덱스에 접근할 수 없다.
     list.Add(2);

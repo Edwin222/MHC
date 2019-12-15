@@ -87,7 +87,7 @@ export class List<T>
 
     public RemoveFirst()
     {
-        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 지우려고 시도했습니다.");
+        Assert.IsTrue(this.Count > 0, "비어있는 리스트에서 원소를 지우려 했습니다.");
 
         var target = this._head;
 
@@ -101,7 +101,7 @@ export class List<T>
 
     public RemoveLast()
     {
-        Assert.IsTrue(this.Count > 0, "리스트가 비어있는데 지우려고 시도했습니다.");
+        Assert.IsTrue(this.Count > 0, "비어있는 리스트에서 원소를 지우려 했습니다.");
 
         var target = this._tail;
 
