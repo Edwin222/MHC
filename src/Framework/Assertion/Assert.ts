@@ -1,7 +1,5 @@
 'use strict';
 
-import { AssertException } from './AssertException';
-
 export class Assert 
 {
     public static IsTrue(value: boolean, msg: string = "Assert.IsTrue가 예측한 값과 다릅니다.")
