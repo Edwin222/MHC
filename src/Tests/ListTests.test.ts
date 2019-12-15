@@ -1,7 +1,5 @@
 
 import { List } from "src/Framework/DataType/List";
-import { Assert } from "src/Framework/Assert";
-
 
 test("기본 동작 테스트", () => 
 {

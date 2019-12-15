@@ -1,5 +1,5 @@
 
-import { DynamicParameter } from "../Framework/DataType/DynamicParameter";
+import { DynamicParameter } from "src/Framework/DataType/DynamicParameter";
 
 test("기본 동작 테스트", () => {
 

@@ -1,5 +1,5 @@
 import { Assert } from "src/Framework/Assert";
-import { Logger } from "../Logger";
+import { Logger } from "src/Framework/Logger";
 
 export class List<T>
 {
@@ -55,14 +55,24 @@ export class List<T>
         {
             if(cursor.Content === item)
             {
+                if(cursor.Prev !== null)
+                {
+                    cursor.Prev.Next = cursor.Next;
+                }
+                else 
+                {
+                    // 맨 앞인 경우
+                    this._head = cursor.Next;
+                }
+
                 if(cursor.Next !== null)
                 {
                     cursor.Next.Prev = cursor.Prev;
                 }
-
-                if(cursor.Prev !== null)
+                else 
                 {
-                    cursor.Prev.Next = cursor.Next;
+                    // 맨 뒤인 경우
+                    this._tail = cursor.Prev;
                 }
 
                 cursor.Next = null;
@@ -80,7 +90,7 @@ export class List<T>
 
     public Get(index: number): T
     {
-        Assert.IsTrue(index < this.Count, "찾으려는 인덱스 ${index}가 리스트의 요소 숫자 ${this.Count}보다 많습니다.");
+        Assert.IsTrue(index < this.Count, "찾으려는 인덱스 " + index + "가 리스트의 요소 숫자 " + this.Count + "보다 많습니다.");
 
         var cursor = this._head;
         
