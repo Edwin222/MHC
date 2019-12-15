@@ -1,6 +1,6 @@
 "use strict";
 
-export default class MathHelper
+export class MathHelper
 {
     public static Max(value1: number, value2: number): number
     {
