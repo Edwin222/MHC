@@ -1,5 +1,5 @@
 import { List } from "src/Framework/DataType/List";
-import { Assert } from "../Assert";
+import { Assert } from "src/Framework/Assert";
 
 export class Stack<T>
 {
