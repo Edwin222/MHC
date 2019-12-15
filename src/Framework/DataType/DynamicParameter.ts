@@ -1,7 +1,7 @@
 "use strict";
 
-import { Assert } from "../Assertion/Assert";
-import { MathHelper } from "../MathHelper";
+import { Assert } from "src/Framework/Assert";
+import { MathHelper } from "src/Framework/MathHelper";
 
 // 증감 가능한 파라미터를 나타냅니다. 최댓값이 변하면 현재값도 비례해서 변합니다.
 export class DynamicParameter
