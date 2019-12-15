@@ -18,9 +18,17 @@ export class Assert
         }
     }
 
-    public static IsEqual<T>(value: T, expected: T, msg: string = "Assert.IsEqual에서 실제 값 " + value + "이 예측한 값 " + expected + "과 다릅니다.")
+    public static Equal<T>(value: T, expected: T, msg: string = "Assert.Equal에서 실제 값 " + value + "이 예측한 값 " + expected + "과 다릅니다.")
     {
         if(value !== expected)
+        {
+            throw Error(msg);
+        }
+    }
+
+    public static NotEqual<T>(value: T, expected: T, msg: string = "Assert.NotEqual에서 실제 값 " + value + "이 예측한 값 " + expected + "과 같습니다.")
+    {
+        if(value === expected)
         {
             throw Error(msg);
         }
