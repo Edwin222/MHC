@@ -55,8 +55,15 @@ export class List<T>
         {
             if(cursor.Content === item)
             {
-                cursor.Next.Prev = cursor;
-                cursor.Prev.Next = cursor.Next;
+                if(cursor.Next !== null)
+                {
+                    cursor.Next.Prev = cursor.Prev;
+                }
+
+                if(cursor.Prev !== null)
+                {
+                    cursor.Prev.Next = cursor.Next;
+                }
 
                 cursor.Next = null;
                 cursor.Prev = null;
@@ -73,7 +80,7 @@ export class List<T>
 
     public Get(index: number): T
     {
-        Assert.IsTrue(index < this.Count, "찾으려는 index가 리스트의 요소 숫자보다 많습니다.");
+        Assert.IsTrue(index < this.Count, "찾으려는 인덱스 ${index}가 리스트의 요소 숫자 ${this.Count}보다 많습니다.");
 
         var cursor = this._head;
         
@@ -102,6 +109,7 @@ export class List<T>
             currentIndex++;
         }
 
+        Logger.Warning("리스트로부터 원소를 찾지 못해 인덱스 대신 null을 리턴했습니다.");
         return null;
     }
 }
