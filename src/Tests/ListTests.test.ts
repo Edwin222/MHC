@@ -1,3 +1,4 @@
+'use strict';
 
 import { List } from "src/Framework/DataType/List";
 
