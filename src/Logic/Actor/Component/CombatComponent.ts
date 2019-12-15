@@ -1,7 +1,8 @@
 'use strict';
 
-import { DynamicParameter } from "../../../Framework/DataType/DynamicParameter";
-import { IDynamicParameter } from "../../../Framework/DataType/IDynamicParameter";
+import { DynamicParameter } from "src/Framework/DataType/DynamicParameter";
+import { IDynamicParameter } from "src/Framework/DataType/IDynamicParameter";
+import { Faction } from "src/Logic/Definition/Faction";
 
 export class CombatComponent
 {
@@ -21,13 +22,21 @@ export class CombatComponent
     public readonly DefencePower: number;
     public readonly Speed: number;
 
+    public readonly Faction: Faction;
+
     private _isDead: boolean;
     get IsDead(): boolean
     {
         return this._isDead;
     }
 
-    constructor(maxLife: number, maxStamina: number, attackPower: number, defencePower: number, speed: number)
+    constructor(
+        maxLife: number, 
+        maxStamina: number, 
+        attackPower: number, 
+        defencePower: number, 
+        speed: number,
+        faction: Faction)
     {
         this._life = new DynamicParameter(maxLife);
         this._stamina = new DynamicParameter(maxStamina);
@@ -35,6 +44,7 @@ export class CombatComponent
         this.AttackPower = attackPower;
         this.DefencePower = defencePower;
         this.Speed = speed;
+        this.Faction = faction;
 
         this._isDead = false;
     }
