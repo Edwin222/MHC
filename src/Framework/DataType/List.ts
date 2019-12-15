@@ -55,30 +55,27 @@ export class List<T>
         {
             if(cursor.Content === item)
             {
-                if(cursor.Prev !== null)
-                {
-                    cursor.Prev.Next = cursor.Next;
-                }
-                else 
+                if(cursor.Prev === null)
                 {
                     // 맨 앞인 경우
-                    this._head = cursor.Next;
+                    this.RemoveFirst();
                 }
-
-                if(cursor.Next !== null)
+                else if(cursor.Next === null)
                 {
-                    cursor.Next.Prev = cursor.Prev;
+                    // 맨 뒤인 경우
+                    this.RemoveLast();
                 }
                 else 
                 {
-                    // 맨 뒤인 경우
-                    this._tail = cursor.Prev;
+                    // 중간인 경우
+                    cursor.Prev.Next = cursor.Next;
+                    cursor.Next.Prev = cursor.Prev;
+                    this._count--;
+                
+                    cursor.Next = null;
+                    cursor.Prev = null;
                 }
 
-                cursor.Next = null;
-                cursor.Prev = null;
-
-                this._count--;
                 return;
             }
 
@@ -86,6 +83,30 @@ export class List<T>
         }
 
         Logger.Warning("리스트로부터 지우려는 원소를 찾지 못해서 지우지 못했습니다.");
+    }
+
+    public RemoveFirst()
+    {
+        var target = this._head;
+
+        this._head = this._head.Next;
+        this._head.Prev = null;
+        this._count--;
+
+        target.Prev = null;
+        target.Next = null;
+    }
+
+    public RemoveLast()
+    {
+        var target = this._tail;
+
+        this._tail = this._tail.Prev;
+        this._tail.Next = null;
+        this._count--;
+
+        target.Prev = null;
+        target.Next = null;
     }
 
     public Get(index: number): T
