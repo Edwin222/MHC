@@ -1,5 +1,5 @@
 echo "프로젝트 빌드 시작"
-./node_modules/.bin/webpack
+yarn build
 
 echo "유닛 테스트 시작"
 yarn _jest_test_run

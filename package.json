@@ -18,9 +18,9 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "test" : "./UnitTest.sh",
+    "test" : "./build/UnitTest.sh",
+    "build" : "./build/Build.sh",
     
-    "build": "./node_modules/.bin/webpack",
     "_jest_test_run": "jest"
   }
 }
